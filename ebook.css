@@ -1,0 +1,90 @@
+/* Layout: one plain, centered column. Sections stack with thin rules. White page, ink text, marigold used for flowers and buttons only. */
+:root{
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --bg:#FFFFFF;--ink:#17203A;--ink-2:#4A5372;--line:#E2E5EE;--tint:#FFF6D8;
+  --gold:#F5B301;--on-gold:#17203A;--petal-done:#D5D9E6;--center:#17203A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#10121B;--ink:#F4F2EA;--ink-2:#A9B0C6;--line:#2A2F42;--tint:#2A2412;--petal-done:#363C58;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#10121B;--ink:#F4F2EA;--ink-2:#A9B0C6;--line:#2A2F42;--tint:#2A2412;--petal-done:#363C58;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;
+  padding-block:0 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(3rem,10vw,5rem)}
+h2{font-size:clamp(2rem,5vw,2.6rem);margin-bottom:12px}
+p{margin:0}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+main{max-width:760px;margin:0 auto}
+section{padding-block:64px;border-top:1px solid var(--line);scroll-margin-top:8px}
+section:first-child{border-top:0;padding-top:72px}
+.muted{color:var(--ink-2)}
+.by{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+.hero p.lede{font-size:1.25rem;color:var(--ink-2);margin:18px 0 26px;max-width:46ch}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);background:transparent;padding:10px 20px;border-radius:6px;font-weight:600;cursor:pointer;text-decoration:none;min-height:44px}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.btn.small{padding:6px 14px;min-height:38px;font-size:.95rem}
+.sub{margin-bottom:24px;color:var(--ink-2)}
+
+.hero{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.hero-flower{width:clamp(110px,22vw,190px);height:auto;aspect-ratio:1}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.hero-flower{order:-1;width:96px}}
+/* garden */
+.flower.bloom svg{animation:bloom .5s ease-out}
+.garden.shuffling .flower svg{animation:spin .7s ease-in-out}
+@keyframes bloom{0%{transform:scale(.6) rotate(-90deg)}60%{transform:scale(1.6) rotate(20deg)}100%{transform:scale(1.2)}}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.flower.bloom svg,.garden.shuffling .flower svg{animation:none}}
+.empty-card{display:flex;align-items:center;gap:16px;margin-top:24px;padding:20px;border:1.5px dashed var(--ink-2);border-radius:6px;color:var(--ink-2)}
+.empty-card svg{width:56px;height:56px;flex:none;--petal:#F5B301;--center:#17203A}
+.bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:14px}
+.garden{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:2px}
+.flower{background:none;border:0;padding:2px;cursor:pointer;border-radius:50%;aspect-ratio:1;display:block}
+.flower svg{width:100%;height:100%;display:block;--petal:var(--gold)}
+.flower:nth-child(3n+1) svg{--petal:#FFC933}
+.flower:nth-child(3n+2) svg{--petal:#EBA000}
+.flower:hover svg{transform:scale(1.2)}
+.flower.opened svg{--petal:var(--petal-done)}
+.flower.sel{outline:2px solid var(--ink)}
+
+/* idea card */
+.idea{background:var(--tint);border:1.5px solid var(--ink);border-radius:6px;padding:24px;margin-top:24px;display:grid;gap:10px}
+.idea .meta{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.idea h3{font-size:clamp(1.8rem,5vw,2.4rem)}
+.idea .actions{margin-top:6px}
+.empty{color:var(--ink-2)}
+
+/* finder */
+.finder{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-bottom:12px}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:4px}
+select,input{width:100%;min-height:44px;border:1.5px solid var(--ink);border-radius:6px;padding:8px 12px;background:var(--bg)}
+.results{display:grid;gap:6px;margin-top:10px}
+.results button{display:flex;gap:12px;text-align:left;border:1px solid var(--line);background:var(--bg);padding:10px 12px;border-radius:6px;cursor:pointer}
+.results button:hover{border-color:var(--ink)}
+.results .d{color:var(--ink-2);min-width:52px}
+
+/* lists */
+.list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.list li{padding-left:18px;position:relative}
+.list li::before{content:"";position:absolute;left:0;top:.65em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;list-style:none;margin:16px 0 0;padding:0}
+.two li{padding-block:8px;border-bottom:1px solid var(--line)}
+.two b{font-weight:600}
+@media (max-width:560px){.two{grid-template-columns:1fr}.finder{grid-template-columns:1fr}}
+
+/* price */
+.price{border:2px solid var(--ink);border-radius:6px;padding:28px;margin-top:20px}
+.amount{font-family:var(--font-display);font-size:4.5rem;line-height:1}
+.amount small{font-family:var(--font-body);font-size:1rem;color:var(--ink-2)}
+.note{margin-top:14px;padding:12px;background:var(--tint);border-radius:6px}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin-top:8px;color:var(--ink-2)}
+footer{max-width:760px;margin:0 auto;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.9rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:6px;font-weight:600;max-width:calc(100% - 32px)}
