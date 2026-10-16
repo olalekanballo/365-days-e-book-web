@@ -1,116 +1,141 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>365 Days E-book</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&display=swap">
-<link rel="stylesheet" href="ebook.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>365 Days E-book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&display=swap">
+  <link rel="stylesheet" href="ebook.css">
 </head>
+
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="fl" viewBox="-20 -20 40 40">
-    <g style="fill:var(--petal,#F5B301)">
-      <ellipse cx="0" cy="-11" rx="5.4" ry="8.6"/><ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(45)"/>
-      <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(90)"/><ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(135)"/>
-      <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(180)"/><ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(225)"/>
-      <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(270)"/><ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(315)"/>
-    </g>
-    <circle r="5.2" style="fill:var(--center,#17203A)"/><circle r="2" style="fill:var(--petal,#F5B301)"/>
-  </symbol>
-</svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="fl" viewBox="-20 -20 40 40">
+      <g style="fill:var(--petal,#F5B301)">
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(45)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(90)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(135)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(180)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(225)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(270)" />
+        <ellipse cx="0" cy="-11" rx="5.4" ry="8.6" transform="rotate(315)" />
+      </g>
+      <circle r="5.2" style="fill:var(--center,#17203A)" />
+      <circle r="2" style="fill:var(--petal,#F5B301)" />
+    </symbol>
+  </svg>
 
-<main>
+  <main>
 
-<section id="home" class="hero">
-<div class="hero-text">
-  <div class="by">Marigold &amp; Ink</div>
-  <h1>365 Days E-book</h1>
-  <p class="lede">A content idea for every day of the year. One page a day for creators and small businesses.</p>
-  <div class="row"><a class="btn gold" href="#pick">Pick an idea</a><a class="btn" href="#price">See the price</a></div></div>
-  <svg class="hero-flower" viewBox="-20 -20 40 40" aria-hidden="true" style="--petal:#F5B301;--center:#17203A"><use href="#fl"/></svg>
-</section>
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <div class="by">Marigold &amp; Ink</div>
+        <h1>365 Days E-book</h1>
+        <p class="lede">A content idea for every day of the year. One page a day for creators and small businesses.</p>
+        <div class="row"><a class="btn gold" href="#pick">Pick an idea</a><a class="btn" href="#price">See the price</a>
+        </div>
+      </div>
+      <svg class="hero-flower" viewBox="-20 -20 40 40" aria-hidden="true" style="--petal:#F5B301;--center:#17203A">
+        <use href="#fl" />
+      </svg>
+    </section>
 
-<section id="pick">
-  <h2>Pick an idea</h2>
-  <p class="sub">Tap a flower to reveal an idea. Don't like it? Tap another, or reshuffle.</p>
-  <div class="bar"><span class="muted" id="opened">0 opened</span><button class="btn small" id="shuffleBtn" type="button">Reshuffle</button></div>
-  <div class="garden" id="garden" role="group" aria-label="365 flowers, each hiding one idea"></div>
-  <div id="pickCard" aria-live="polite"></div>
-</section>
+    <section id="pick">
+      <h2>Pick an idea</h2>
+      <p class="sub">Tap a flower to reveal an idea. Don't like it? Tap another, or reshuffle.</p>
+      <div class="bar"><span class="muted" id="opened">0 opened</span><button class="btn small" id="shuffleBtn"
+          type="button">Reshuffle</button></div>
+      <div class="garden" id="garden" role="group" aria-label="365 flowers, each hiding one idea"></div>
+      <div id="pickCard" aria-live="polite"></div>
+    </section>
 
-<section id="find">
-  <h2>Find a date</h2>
-  <p class="sub">Choose any day of the year, or search by keyword.</p>
-  <div class="finder">
-    <div><label for="monthSel">Month</label><select id="monthSel"></select></div>
-    <div><label for="daySel">Day</label><select id="daySel"></select></div>
-  </div>
-  <div class="row">
-    <button class="btn small" id="prevBtn" type="button">Previous</button>
-    <button class="btn small" id="todayBtn" type="button">Today</button>
-    <button class="btn small" id="nextBtn" type="button">Next</button>
-  </div>
-  <div id="findCard" aria-live="polite"></div>
-  <div style="margin-top:28px"><label for="q">Search all ideas</label><input id="q" type="search" placeholder="Try coffee, review or offer" autocomplete="off"></div>
-  <div class="results" id="results" aria-live="polite"></div>
-</section>
+    <section id="find">
+      <h2>Find a date</h2>
+      <p class="sub">Choose any day of the year, or search by keyword.</p>
+      <div class="finder">
+        <div><label for="monthSel">Month</label><select id="monthSel"></select></div>
+        <div><label for="daySel">Day</label><select id="daySel"></select></div>
+      </div>
+      <div class="row">
+        <button class="btn small" id="prevBtn" type="button">Previous</button>
+        <button class="btn small" id="todayBtn" type="button">Today</button>
+        <button class="btn small" id="nextBtn" type="button">Next</button>
+      </div>
+      <div id="findCard" aria-live="polite"></div>
+      <div style="margin-top:28px"><label for="q">Search all ideas</label><input id="q" type="search"
+          placeholder="Try coffee, review or offer" autocomplete="off"></div>
+      <div class="results" id="results" aria-live="polite"></div>
+    </section>
 
-<section id="inside">
-  <h2>What's inside</h2>
-  <p class="sub">365 pages, one for every day, in twelve monthly themes.</p>
-  <ul class="two" id="months"></ul>
-</section>
+    <section id="inside">
+      <h2>What's inside</h2>
+      <p class="sub">365 pages, one for every day, in twelve idea categories.</p>
+      <ul class="two" id="months"></ul>
+    </section>
 
-<section id="who">
-  <h2>Who it's for</h2>
-  <ul class="list">
-    <li>Content creators who need something to post every day.</li>
-    <li>Shop owners and online sellers.</li>
-    <li>Freelancers, coaches and consultants.</li>
-    <li>Cafés, salons and local service businesses.</li>
-    <li>Community groups and non-profits.</li>
-  </ul>
-</section>
+    <section id="who">
+      <h2>Who it's for</h2>
+      <ul class="list">
+        <li>Content creators who need something to post every day.</li>
+        <li>Shop owners and online sellers.</li>
+        <li>Freelancers, coaches and consultants.</li>
+        <li>Cafés, salons and local service businesses.</li>
+        <li>Community groups and non-profits.</li>
+      </ul>
+    </section>
 
-<section id="why">
-  <h2>Why you need it</h2>
-  <ul class="list">
-    <li>No more blank page. Open today's date and start.</li>
-    <li>Ideas come from everyday life, so they work in any country and any industry.</li>
-    <li>Each page takes about ten minutes to use.</li>
-    <li>Miss a day? Jump to any date. Every page stands alone.</li>
-  </ul>
-</section>
+    <section id="why">
+      <h2>Why you need it</h2>
+      <ul class="list">
+        <li>No more blank page. Open today's date and start.</li>
+        <li>Ideas come from everyday life, so they work in any country and any industry.</li>
+        <li>Each page takes about ten minutes to use.</li>
+        <li>Miss a day? Jump to any date. Every page stands alone.</li>
+      </ul>
+    </section>
 
-<section id="price">
-  <h2>Price</h2>
-  <div class="price">
-    <div class="amount">$19 <small>USD, one-time</small></div>
-    <ul class="list">
-      <li>365 daily pages, one idea per date</li>
-      <li>12 monthly themes</li>
-      <li>Digital edition</li>
-    </ul>
-    <div class="row" style="margin-top:22px"><button class="btn gold" id="buyBtn" type="button">Buy the book</button></div>
-    <div class="note" id="buyNote" hidden>Demo checkout. The real payment button will go here.</div>
-  </div>
-</section>
+    <section id="price">
+      <h2>Price</h2>
+      <div class="price">
+        <div class="amount">$19 <small>USD, one-time</small></div>
+        <ul class="list">
+          <li>365 daily pages, one idea per date</li>
+          <li>12 idea categories</li>
+          <li>Digital edition</li>
+        </ul>
+        <div class="row" style="margin-top:22px"><button class="btn gold" id="buyBtn" type="button">Buy the
+            book</button></div>
+        <div class="note" id="buyNote" hidden>Demo checkout. The real payment button will go here.</div>
+      </div>
+    </section>
 
-<section id="faq">
-  <h2>Questions</h2>
-  <details><summary>Will it fit my business?</summary><p>Yes. The ideas are based on daily human activity, not one industry.</p></details>
-  <details><summary>Do I follow the dates in order?</summary><p>No. Use today's date, jump to any date, or pick from the garden.</p></details>
-  <details><summary>What about 29 February?</summary><p>The book has 365 pages. On 29 February, use the page for 28 February.</p></details>
-</section>
+    <section id="faq">
+      <h2>Questions</h2>
+      <details>
+        <summary>Will it fit my business?</summary>
+        <p>Yes. The ideas are based on daily human activity, not one industry.</p>
+      </details>
+      <details>
+        <summary>Do I follow the dates in order?</summary>
+        <p>No. Use today's date, jump to any date, or pick from the garden.</p>
+      </details>
+      <details>
+        <summary>What about 29 February?</summary>
+        <p>The book has 365 pages. On 29 February, use the page for 28 February.</p>
+      </details>
+    </section>
 
-</main>
+  </main>
 
-<footer>&copy; 2026 Marigold &amp; Ink. Demo preview of the book.</footer>
-<div class="toast" id="toast" hidden></div>
+  <footer>&copy; 2026 Marigold &amp; Ink. Demo preview of the book.</footer>
+  <div class="toast" id="toast" hidden></div>
 
-<script src="ebook.js"></script>
+  <script src="ebook.js"></script>
 </body>
+
 </html>
